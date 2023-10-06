@@ -17,6 +17,9 @@ public class financialCalculators {
             case 1:
                 mortgageCalculator();
                 break;
+            case 2:
+                futureValueCalculator();
+                break;
             default:
                 System.out.println("Wait.");
     }
@@ -60,7 +63,38 @@ public class financialCalculators {
 
     }
 
-    public static void FutureValueCalculator{
+    public static void futureValueCalculator() {
+
+        Scanner myScanner = new Scanner(System.in);
+
+            System.out.print("Enter the deposit amount:");
+            double deposit = myScanner.nextDouble();
+
+            System.out.print("Enter the interest rate (%):");
+            double maturityRate = myScanner.nextDouble();
+
+            System.out.print("Enter the number of years:");
+            double years = myScanner.nextDouble();
+
+            double n= 365; // since it is compounded daily
+
+            double futureValue = deposit* (Math.pow(1+(maturityRate/100/n), n*years));
+            System.out.println(futureValue);
+            String roundedFutureValue = String.format("%.2f", futureValue);
+
+
+            double totalDepositInterest = futureValue-deposit;
+            System.out.println(totalDepositInterest);
+            String roundedTotalDepositInterest = String.format("%.2f", totalDepositInterest);
+
+
+            System.out.println("For the deposit amount of $" + deposit + " in a CD that earns "+ maturityRate +
+                    "% interest and matures in " +years+ "years, your ending balance will be $" +roundedFutureValue+
+                    "and you would have earned $" + roundedTotalDepositInterest+ "in interest." );
+
+
+// "For the deposit amount of $ deposit in a CD that earns maturityRate % interest and matures in years years, your ending balance will be $ futureValue
+// and you would have earned $ totalInterest in interest."
 
     }
     //    public static class futureValueCalculator
